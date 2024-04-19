@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-import { Text } from 'react-native'
-import { StatusBar } from 'expo-status-bar';
 import { selectGetImgs } from '../../redux/imgs/selectors';
 import { useAppDispatch, useAppSelector } from '../../hooks/appDispatch';
 import { fetchImages } from '../../redux/imgs/operations';
@@ -18,10 +16,9 @@ const Home = () => {
 
   return (
     <>
-      <Text>Home1dasda</Text>
-      <ImgsList/>
-      </>
+      <ImgsList />
+    </>
   )
-}
+};
 
 export default Home
