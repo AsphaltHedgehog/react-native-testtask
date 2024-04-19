@@ -1,15 +1,17 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchImages } from "./operations";
+import { fetchImages, fetchPictures } from "./operations";
 import { Basic } from "unsplash-js/dist/methods/photos/types";
 
 type imagesState = {
   result: Basic[];
+  picture: Basic | {};
   isLoading: boolean;
   error: string | null;
 }
 
 const initialState: imagesState = {
   result: [],
+  picture: {},
   isLoading: false,
   error: null,
 }
@@ -21,12 +23,17 @@ const imagesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchImages.fulfilled, (state, { payload }) => {
-        state.result = payload; // TODO: 
+        state.result = payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchPictures.fulfilled, (state, { payload }) => {
+        state.picture = payload; 
         state.isLoading = false;
       })
       .addMatcher(
         isAnyOf(
           fetchImages.pending,
+          fetchPictures.pending,
         ),
         (state) => {
           state.isLoading = true;
@@ -35,6 +42,7 @@ const imagesSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchImages.rejected,
+          fetchPictures.rejected,
         ),
         (state, action) => {
           state.isLoading = false;
