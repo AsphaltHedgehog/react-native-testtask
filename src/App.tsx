@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-native-gesture-handler';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { store } from './redux/store';
@@ -9,16 +8,16 @@ import Home from './pages/home/Home';
 import Pictures from './pages/pictures/Pictures';
 import { Provider } from 'react-redux';
 
-const MainStack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <Provider store={store}>
     <NavigationContainer>
-      <MainStack.Navigator>
-        <MainStack.Screen name="Home" component={Home} />
-        <MainStack.Screen name="Img" component={Pictures} />
-      </MainStack.Navigator>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name="Home" component={Home} options={{title: "Welcome to our cave"}}/>
+        <Stack.Screen name="Pictures" component={Pictures} />
+      </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   );
