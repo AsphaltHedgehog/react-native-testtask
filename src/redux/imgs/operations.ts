@@ -3,6 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createApi } from 'unsplash-js';
 // import { Basic } from "unsplash-js/dist/methods/photos/types";
 
+// TODO: REMOVE THIS
+
 // interface AsyncThunkConfig {
 //   state: RootState;
 //   dispatch: AppDispatch;
