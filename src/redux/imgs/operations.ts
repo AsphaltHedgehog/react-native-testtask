@@ -1,21 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { AppDispatch, RootState } from "../store";
 import { createApi } from 'unsplash-js';
-// import { Basic } from "unsplash-js/dist/methods/photos/types";
-
-// TODO: REMOVE THIS
-
-// interface AsyncThunkConfig {
-//   state: RootState;
-//   dispatch: AppDispatch;
-//   rejectValue: string;
-// };
-
 
 const unsplash = createApi({
   accessKey: "Zo2_R13GCaDp3KnwYza6ivMP0d9hlkj7pvMdszCcCL0"
 })
-
 
 export const fetchImages = createAsyncThunk
   ("getImgs", async (_, thunkApi) => {
