@@ -20,12 +20,14 @@ const ImgsCard = ({ id, img, author, descr, altDescr }: Props) => {
   
   return (
     
-    <View>
+    <View style={styles.card}>
       <Pressable onPress={handlePress}>
         <Image source={{ uri: img }} style={styles.img} alt={altDescr} />
       </Pressable>
-      <Text>{author}</Text>
-      <Text>{descr}</Text>
+      <View style={styles.textWrapper}>
+        <Text style={styles.text}>{author}</Text>
+        <Text style={styles.text}>{descr}</Text>
+      </View>
     </View>
     
   )
@@ -38,6 +40,30 @@ const styles = StyleSheet.create({
   img: {
     width: `100%`,
     height: 200,
-    resizeMode: 'cover'
+    resizeMode: 'cover',
+    position: 'absolute',
+  },
+  card: {
+    width: 400,
+    minHeight: 235,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#979595',
+    borderRadius: 8,
+    padding: 16,
+    position: 'relative',
+  },
+  text: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 20,
+  },
+  textWrapper: {
+    position: 'absolute',
+    bottom: 30,
+    right: `10%`,
+    maxHeight: 55,
+    maxWidth: 180,
+    overflow: 'hidden'
   },
 });

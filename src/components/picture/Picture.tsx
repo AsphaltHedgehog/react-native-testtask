@@ -1,31 +1,37 @@
 import React from 'react'
-import { useAppSelector } from '../../hooks/appDispatch'
+import { useAppSelector } from '../../hooks/appRedux';
 import { selectGetPicture } from '../../redux/imgs/selectors'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Platform, StyleSheet, View } from 'react-native'
 import { Basic } from "unsplash-js/dist/methods/photos/types";
 
 const Picture = () => {
   const pictureInfoSelector = useAppSelector(selectGetPicture) as Basic
 
-  const { links, user, description } = pictureInfoSelector;
+  const { urls } = pictureInfoSelector;
+
+  const styles = Platform.OS === 'web' ? webStyles : mobileStyles;
 
   return (
     <View>
-      <Image source={{ uri: links.download }} style={styles.img} />
-      {user && <Text>{user.name}</Text>}
-      {description && <Text>{description}</Text>}
+      <Image source={{ uri: urls.raw }} style={styles.img} />
     </View>
   )
 };
 
 export default Picture
 
+const webStyles = StyleSheet.create({
+  img: {
+    width: `100%`, 
+    height: 800, 
+    resizeMode: "stretch"
+  },
+});
 
-
-const styles = StyleSheet.create({
+const mobileStyles = StyleSheet.create({
   img: {
     width: `100%`,
     height: `100%`,
-    resizeMode: 'contain'
+    resizeMode: "cover"
   },
 });
