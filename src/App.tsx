@@ -15,7 +15,7 @@ export default function App() {
     <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name="Home" component={Home} options={{title: "Welcome to our cave"}}/>
+        <Stack.Screen name="Home" component={Home} options={{title: "Welcome to our gallery"}}/>
         <Stack.Screen name="Pictures" component={Pictures} />
       </Stack.Navigator>
       </NavigationContainer>
