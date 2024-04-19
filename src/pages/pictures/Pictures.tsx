@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/appDispatch'
+import { useAppDispatch, useAppSelector } from '../../hooks/appRedux'
 import { fetchPictures } from '../../redux/imgs/operations'
 import Picture from '../../components/picture/Picture'
-import { selectGetPicture, selectIsLoading } from '../../redux/imgs/selectors'
-import { Text } from 'react-native'
-import { Basic } from "unsplash-js/dist/methods/photos/types";
+import { selectGetPicture } from '../../redux/imgs/selectors'
+
 
 
 const Pictures = ({ route }) => {
   const dispatch = useAppDispatch()
-  const isLoadingSelector = useAppSelector(selectIsLoading)
   const pictureInfoSelector = useAppSelector(selectGetPicture)
 
   useEffect(() => {
@@ -19,7 +17,6 @@ const Pictures = ({ route }) => {
 
   return (
     <>
-      {isLoadingSelector && <Text>Loading...</Text>}
       {pictureInfoSelector && Object.keys(pictureInfoSelector).length > 0 && <Picture/>}
     </>
   )

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { selectGetImgs } from '../../redux/imgs/selectors';
-import { useAppDispatch, useAppSelector } from '../../hooks/appDispatch';
+import { useAppDispatch, useAppSelector } from '../../hooks/appRedux';
 import { fetchImages } from '../../redux/imgs/operations';
 import ImgsList from '../../components/imgsList/ImgsList';
 
